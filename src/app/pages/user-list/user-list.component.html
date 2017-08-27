@@ -1,3 +1,26 @@
-<p>
-  user-list works!
-</p>
+<div class="row">
+  <div class="col s12 m3" *ngFor="let user of userData">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{imgUrl}}{{user._id}}">
+        <span class="card-title">{{user.firstName}} {{user.lastName}}</span>
+        <a (click)="onEditButtonClick(user._id)" class="btn-floating halfway-fab waves-effect waves-light green">
+          <i class="material-icons">edit</i>
+        </a>
+      </div>
+      <div class="card-content">
+        <p>{{user.email}}</p>
+        <p>{{user.role}}</p>
+      </div>
+      <div class="card-action red-text">
+        <a (click)="onDeleteButtonClick(user._id)" class="waves-effect waves-light ">
+          <i class="material-icons left">delete</i>Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large blue" (click)="onAddButtonClick()">
+      <i class="large material-icons">add</i>
+    </a>
+</div>

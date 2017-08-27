@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyService } from '../../shared/company/company.service';
+import { Company } from '../../shared/company/company';
 
 @Component({
   selector: 'app-company-list',
@@ -14,7 +15,7 @@ export class CompanyListComponent implements OnInit {
     private router: Router,
     private companyService: CompanyService
   ) { }
-  companyData = [];
+  companyData: Array<Company>;
   searchText = '';
   numPage = 0;
   rowPerPage = 10;
@@ -40,8 +41,6 @@ export class CompanyListComponent implements OnInit {
   }
 
   onDeleteButtonClick(id) {
-    // this.companyData.splice(id, 1);
-    // localStorage.setItem('company', JSON.stringify(this.companyData));
     this.companyService.deleteItem(id).subscribe(
       datas => {
         this.loadItem();

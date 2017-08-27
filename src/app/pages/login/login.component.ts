@@ -2,17 +2,22 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Login } from '../../shared/user/login';
+import { LoginService } from '../../shared/user/login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
 
   login: Login;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private loginService: LoginService
+  ) {
     this.login = new Login();
   }
 
@@ -30,8 +35,15 @@ export class LoginComponent implements OnInit {
     if ($('.invalid').length > 0) {
       Materialize.toast('Invalid', 1000);
     } else {
-      localStorage.setItem('token', 'login');
-      this.router.navigate(['support', 'issue-list']);
+      // localStorage.setItem('token', 'login');
+      this.loginService.doLogin(this.login).subscribe((res)=>{
+        if(res.success){
+          localStorage.setItem('token', res.token)
+          this.router.navigate(['support', 'issue-list']);
+        }else{
+          Materialize.toast('Login Fail', 1000);
+        }
+      });
     }
   }
 

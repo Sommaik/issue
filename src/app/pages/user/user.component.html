@@ -1,3 +1,53 @@
-<p>
-  user works!
-</p>
+<div class="container">
+
+  <form (ngSubmit)="onSave();" #userForm="ngForm">
+    <div class="row">
+      <div class="input-field col s12">
+        <input [(ngModel)]="user.email" placeholder="" id="email" type="email" class="validate" required name="email">
+        <label for="email">Email</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <input [(ngModel)]="user.password" placeholder="" id="password" type="password" class="validate" required name="password"
+          pattern="\d{3,15}">
+        <label for="password">Password</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <input [(ngModel)]="repassword" placeholder="" id="password" type="password" class="validate" required name="repassword"
+          pattern="\d{3,15}">
+        <label for="password">Re-Password</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <input [(ngModel)]="user.firstName" placeholder="" id="first_name" type="text" class="validate" required name="firstName">
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <input [(ngModel)]="user.lastName" placeholder="" id="last_name" type="text" class="validate" required name="lastName">
+        <label for="last_name">Last Name</label>
+      </div>
+      <div class="input-field col s12">
+        <select [(ngModel)]="user.role" name="role">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="admin">Admin</option>
+            <option value="support">IT Support</option>
+            <option value="dev">Developer</option>
+          </select>
+        <label>Role</label>
+      </div>
+      <button type="submit" class="btn col s12 green" [disabled]="!userForm.form.valid || user.password != repassword">Save</button>
+    </div>
+  </form>
+
+  <form *ngIf="mode == 'EDIT'">
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file" (change)="fileChangeEvent($event)" id="uploadFile">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light" type="button" (click)="upload()" >Upload</button>
+  </form>
+
+</div>
