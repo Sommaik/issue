@@ -1,0 +1,13 @@
+.pagination li.active {
+    background-color: #1e88e5;
+}
+
+.table-col-50 {
+    text-align: center;
+    width: 50px;
+}
+
+.table-col-100 {
+    text-align: center;
+    width: 100px;
+}
