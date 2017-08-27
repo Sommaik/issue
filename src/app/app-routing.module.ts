@@ -20,14 +20,14 @@ const routes: Routes = [
     path: '',
     component: PublicZoneComponent,
     children: [{
-      path : '',
-      component : HomeComponent
-    },{
-      path : 'home',
-      component : HomeComponent
-    },{
-      path : 'login',
-      component : LoginComponent
+      path: '',
+      component: HomeComponent
+    }, {
+      path: 'home',
+      component: HomeComponent
+    }, {
+      path: 'login',
+      component: LoginComponent
     }]
   },
   {
@@ -35,35 +35,35 @@ const routes: Routes = [
     component: SupportZoneComponent,
     canActivate: [LoginGuard],
     children: [{
-      path : '',
-      component : IssueListComponent
-    },{
-      path : 'company',
-      component : CompanyComponent
-    },{
-      path : 'company/:id',
-      component : CompanyComponent
-    },{
-      path : 'company-list',
-      component : CompanyListComponent
-    },{
-      path : 'customer',
-      component : CustomerComponent
-    },{
-      path : 'customer-list',
-      component : CustomerListComponent
-    },{
-      path : 'user',
-      component : UserComponent
-    },{
-      path : 'user-list',
-      component : UserListComponent
-    },{
-      path : 'issue',
-      component : IssueComponent
-    },{
-      path : 'issue-list',
-      component : IssueListComponent
+      path: '',
+      component: IssueListComponent
+    }, {
+      path: 'company',
+      component: CompanyComponent
+    }, {
+      path: 'company/:id',
+      component: CompanyComponent
+    }, {
+      path: 'company-list',
+      component: CompanyListComponent
+    }, {
+      path: 'customer',
+      component: CustomerComponent
+    }, {
+      path: 'customer-list',
+      component: CustomerListComponent
+    }, {
+      path: 'user',
+      component: UserComponent
+    }, {
+      path: 'user-list',
+      component: UserListComponent
+    }, {
+      path: 'issue',
+      component: IssueComponent
+    }, {
+      path: 'issue-list',
+      component: IssueListComponent
     }]
   }
 ];

@@ -16,7 +16,7 @@ export class PublicZoneComponent implements OnInit {
     return localStorage.getItem('token') ? true : false;
   }
 
-  logOut(){
+  logOut() {
     localStorage.removeItem('token');
   }
 }

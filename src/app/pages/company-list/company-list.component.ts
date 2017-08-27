@@ -15,17 +15,13 @@ export class CompanyListComponent implements OnInit {
     private companyService: CompanyService
   ) { }
   companyData = [];
-  searchText = "";
+  searchText = '';
   numPage = 0;
   rowPerPage = 10;
   total = 0;
   paging = [];
 
   ngOnInit() {
-    // if (localStorage.getItem('company')) {
-    //   this.companyData = JSON.parse(localStorage.getItem('company'));
-    // } 
-    // this.loadItem();
     this.search();
   }
 
@@ -60,11 +56,11 @@ export class CompanyListComponent implements OnInit {
   }
 
   search() {
-    let searchBody = {
+    const searchBody = {
       searchText: this.searchText,
       rowPerPage: this.rowPerPage,
       numPage: this.numPage
-    }
+    };
     this.companyService.search(searchBody).subscribe(data => {
       this.companyData = data.rows;
       this.total = data.total;
@@ -75,7 +71,7 @@ export class CompanyListComponent implements OnInit {
   }
 
   renderPaging() {
-    let allPage = Math.ceil(this.total / this.rowPerPage);
+    const allPage = Math.ceil(this.total / this.rowPerPage);
     this.paging = [];
     for (let i = 0; i < allPage; i++) {
       this.paging.push(i + 1);

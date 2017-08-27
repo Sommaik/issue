@@ -16,15 +16,15 @@ export class CompanyComponent implements OnInit {
     private companyService: CompanyService
   ) { }
 
-  mode: string = "ADD";
-  id: number = 0;
+  mode = 'ADD';
+  id = 0;
   compCode: string;
   compName: string;
 
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
       if (params['id']) {
-        let id = params['id'];
+        const id = params['id'];
         // let companyData = JSON.parse(localStorage.getItem('company'));
         // let company = companyData[id];
         this.companyService.findById(id).subscribe(
@@ -37,20 +37,20 @@ export class CompanyComponent implements OnInit {
           }, error => {
             console.log(error);
           });
-        this.mode = "EDIT";
+        this.mode = 'EDIT';
         this.id = id;
       }
     });
   }
 
   onSave() {
-    let comp = {
+    const comp = {
       compCode: this.compCode,
       compName: this.compName
-    }
-    let company: Array<any> = [];
+    };
+    const company: Array<any> = [];
 
-    if (this.mode === "EDIT") {
+    if (this.mode === 'EDIT') {
       this.companyService.updateItem(this.id, comp).subscribe(
         data => {
           Materialize.toast('Update item complete', 1000);
@@ -59,7 +59,7 @@ export class CompanyComponent implements OnInit {
         err => {
           console.log(err);
         }
-      )
+      );
     } else {
       this.companyService.addItem(comp).subscribe(
         datas => {

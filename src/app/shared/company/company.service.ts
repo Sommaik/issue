@@ -19,15 +19,15 @@ export class CompanyService {
   }
 
   addItem(body): Observable<any> {
-    let bodyString = JSON.stringify(body);
-    let headers = new Headers({
+    const bodyString = JSON.stringify(body);
+    const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    let options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers: headers });
     return this.http.post(
       `${environment.apiUrl}/company`, bodyString, options)
       .map((res: Response) => {
-        return res.json()
+        return res.json();
       })
       .catch((error: any) => Observable.throw(error));
   }
@@ -43,36 +43,36 @@ export class CompanyService {
   findById(id): Observable<any> {
     return this.http.get(
       `${environment.apiUrl}/company/findById/${id}`
-      ).map((res: Response) => {
+    ).map((res: Response) => {
+      return res.json();
+    })
+      .catch((error: any) => Observable.throw(error));
+  }
+
+  updateItem(id, body): Observable<any> {
+    const bodyString = JSON.stringify(body);
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.put(
+      `${environment.apiUrl}/company/${id}`, bodyString, options)
+      .map((res: Response) => {
         return res.json();
       })
       .catch((error: any) => Observable.throw(error));
   }
 
-  updateItem(id, body): Observable<any> {
-    let bodyString = JSON.stringify(body);
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.put(
-      `${environment.apiUrl}/company/${id}`, bodyString, options)
-      .map((res: Response) => {
-        return res.json()
-      })
-      .catch((error: any) => Observable.throw(error));
-  }
-
   search(body): Observable<any> {
-    let bodyString = JSON.stringify(body);
-    let headers = new Headers({
+    const bodyString = JSON.stringify(body);
+    const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    let options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers: headers });
     return this.http.post(
       `${environment.apiUrl}/company/search`, bodyString, options)
       .map((res: Response) => {
-        return res.json()
+        return res.json();
       })
       .catch((error: any) => Observable.throw(error));
   }

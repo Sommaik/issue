@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    setTimeout(()=>{
+    setTimeout(() => {
       Materialize.updateTextFields();
     }, 1000);
   }
 
   doLogin() {
-    if ($(".invalid").length > 0) {
+    if ($('.invalid').length > 0) {
       Materialize.toast('Invalid', 1000);
     } else {
       localStorage.setItem('token', 'login');
